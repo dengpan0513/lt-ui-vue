@@ -1,0 +1,13 @@
+@use "./variable.scss" as *;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+  font-family: $font-family;
+  color: $color-text;
+  -webkit-font-smoothing: antialiased;
+}
