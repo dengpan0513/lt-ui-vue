@@ -1,10 +1,30 @@
 {
   "name": "lt-ui-vue",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.2",
+  "title": "lt-ui-vue",
+  "description": "A Vue ui components for web",
+  "keywords": ["lt-ui", "vue", "components"],
+  "author": {
+    "name": "dengpan0513",
+    "url": "https://github.com/dengdengdengpan"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dengdengdengpan/lt-ui-vue.git"
+  },
+  "homepage": "https://github.com/dengdengdengpan/lt-ui-vue#readme",
+  "main": "lib/lt-ui-vue.common.js",
+  "files": [
+    "components",
+    "icons",
+    "lib",
+    "src/utils",
+    "src/index.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "yarn svgo && vue-cli-service build --target lib --dest lib --name lt-ui-vue src/index.js && rm ./lib/demo.html",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "svgo": "svgo -f icons/svgs --config=icons/svgo.config.js"
