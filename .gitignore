@@ -5,6 +5,7 @@ node_modules
 /public
 /src/main.js
 /src/App.vue
+/src/examples/
 
 # local env files
 .env.local
