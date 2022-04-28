@@ -47,14 +47,23 @@ export default {
     },
     icon: {
       type: String
+    },
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator (value) {
+        const iconPositionList = ['left', 'right']
+        return oneOf(value, iconPositionList)
+      }
     }
   },
   computed: {
     classList () {
-      const { type, size } = this
+      const { type, size, icon, iconPosition } = this
       return [
         type && createClass(classPrefix, type),
-        size && createClass(classPrefix, size)
+        size && createClass(classPrefix, size),
+        icon && iconPosition && createClass(classPrefix, 'icon-', iconPosition)
       ]
     }
   }
@@ -64,6 +73,7 @@ export default {
 <style lang="scss" scoped>
 @use "../styles/variable.scss" as *;
 $border-radius: 2px;
+$icon-margin: 8px;
 
 .l-button {
   display: inline-flex;
@@ -79,8 +89,16 @@ $border-radius: 2px;
   cursor: pointer;
   user-select: none;
 
-  > .l-button-icon {
-    margin-right: 8px;
+  &.l-button-icon-left {
+    > .l-button-icon {
+      margin-right: $icon-margin;
+    }
+  }
+  &.l-button-icon-right {
+    > .l-button-icon {
+      order: 1;
+      margin-left: $icon-margin;
+    }
   }
 
   &.l-button-medium {
