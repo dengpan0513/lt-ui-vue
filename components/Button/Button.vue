@@ -4,6 +4,7 @@
     :type="htmlType"
     class="l-button"
   >
+    <l-icon :name="icon" class="l-button-icon" />
     <span>
       <slot />
     </span>
@@ -11,12 +12,14 @@
 </template>
 
 <script>
+import LIcon from '../Icon/Icon.vue'
 import { oneOf, createClass } from '@/utils/index.js'
 
 const classPrefix = 'l-button-'
 
 export default {
   name: 'LButton',
+  component: { LIcon },
   props: {
     type: {
       type: String,
@@ -41,6 +44,9 @@ export default {
         const htmlTypeList = ['button', 'submit', 'reset']
         return oneOf(value, htmlTypeList)
       }
+    },
+    icon: {
+      type: String
     }
   },
   computed: {
@@ -69,8 +75,13 @@ $border-radius: 2px;
   color: $color-text;
   font-weight: 400;
   white-space: nowrap;
+  vertical-align: middle;
   cursor: pointer;
   user-select: none;
+
+  > .l-button-icon {
+    margin-right: 8px;
+  }
 
   &.l-button-medium {
     height: 32px;
