@@ -4,7 +4,8 @@
     :type="htmlType"
     class="l-button"
   >
-    <l-icon :name="icon" class="l-button-icon" />
+    <l-icon v-if="loading" name="loading" spin class="l-button-icon" />
+    <l-icon v-else :name="icon" class="l-button-icon" />
     <span>
       <slot />
     </span>
@@ -55,15 +56,20 @@ export default {
         const iconPositionList = ['left', 'right']
         return oneOf(value, iconPositionList)
       }
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     classList () {
-      const { type, size, icon, iconPosition } = this
+      const { type, size, icon, iconPosition, loading } = this
       return [
         type && createClass(classPrefix, type),
         size && createClass(classPrefix, size),
-        icon && iconPosition && createClass(classPrefix, 'icon-', iconPosition)
+        (icon || loading) && iconPosition && createClass(classPrefix, 'icon-', iconPosition),
+        loading && createClass(classPrefix, 'loading')
       ]
     }
   }
@@ -80,6 +86,7 @@ $icon-margin: 8px;
   justify-content: center;
   align-items: center;
   border: 1px solid transparent;
+  border-radius: $border-radius;
   line-height: 1.5715;
   font-size: 14px;
   color: $color-text;
@@ -88,39 +95,55 @@ $icon-margin: 8px;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
+}
 
-  &.l-button-icon-left {
-    > .l-button-icon {
-      margin-right: $icon-margin;
-    }
-  }
-  &.l-button-icon-right {
-    > .l-button-icon {
-      order: 1;
-      margin-left: $icon-margin;
-    }
-  }
+.l-button-medium {
+  height: 32px;
+  padding: 5px 16px;
+}
+.l-button-large {
+  height: 36px;
+  padding: 7px 20px;
+}
+.l-button-small {
+  height: 28px;
+  padding: 3px 16px;
+}
+.l-button-mini {
+  height: 24px;
+  padding: 2px 12px;
+  font-size: $font-size-small;
+  line-height: 20px;
+}
 
-  &.l-button-medium {
-    height: 32px;
-    padding: 5px 16px;
+.l-button-icon-left {
+  > .l-button-icon {
+    margin-right: $icon-margin;
   }
-
-  &.l-button-large {
-    height: 36px;
-    padding: 7px 20px;
+}
+.l-button-icon-right {
+  > .l-button-icon {
+    order: 1;
+    margin-left: $icon-margin;
   }
+}
 
-  &.l-button-small {
-    height: 28px;
-    padding: 3px 16px;
-  }
+.l-button-loading {
+  position: relative;
+  pointer-events: none;
 
-  &.l-button-mini {
-    height: 24px;
-    padding: 2px 12px;
-    font-size: $font-size-small;
-    line-height: 20px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: inherit;
+    opacity: .4;
+    cursor: default;
   }
 }
 
