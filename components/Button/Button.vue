@@ -2,6 +2,7 @@
   <button
     :class="classList"
     :type="htmlType"
+    :disabled="disabled"
     class="l-button"
   >
     <l-icon v-if="loading" name="loading" spin class="l-button-icon" />
@@ -60,6 +61,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -95,6 +100,10 @@ $icon-margin: 8px;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }
 
 .l-button-medium {
@@ -156,6 +165,10 @@ $icon-margin: 8px;
   &:active {
     background-color: $color-fill-darker;
   }
+  &[disabled] {
+    background-color: $color-fill-light;
+    color: $color-text-gray;
+  }
 }
 
 .l-button-primary {
@@ -167,6 +180,10 @@ $icon-margin: 8px;
   }
   &:active {
     background-color: $color-primary-active;
+  }
+  &[disabled] {
+    background-color: $color-primary-disabled;
+    color: #fff;
   }
 }
 
@@ -181,6 +198,11 @@ $icon-margin: 8px;
   &:active {
     background-color: $color-fill-darker;
     border-color: $color-text-light;
+  }
+  &[disabled] {
+    background-color: $color-fill;
+    border: 1px dashed $color-fill-dark;
+    color: $color-text-gray;
   }
 }
 
@@ -197,6 +219,10 @@ $icon-margin: 8px;
     border-color: $color-primary-active;
     color: $color-primary-active;
   }
+  &[disabled] {
+    border: 1px solid $color-primary-disabled;
+    color: $color-primary-disabled;
+  }
 }
 
 .l-button-text {
@@ -208,6 +234,11 @@ $icon-margin: 8px;
   }
   &:active {
     background-color: $color-fill-dark;
+  }
+
+  &[disabled] {
+    background-color: #fff;
+    color: $color-primary-disabled;
   }
 }
 </style>
