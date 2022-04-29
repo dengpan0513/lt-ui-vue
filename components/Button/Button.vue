@@ -65,18 +65,26 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    status: {
+      type: String,
+      validator (value) {
+        const buttonStatusList = ['success', 'warning', 'danger']
+        return oneOf(value, buttonStatusList)
+      }
     }
   },
   computed: {
     classList () {
-      const { type, size, icon, iconPosition, loading } = this
+      const { type, size, icon, iconPosition, loading, status } = this
       const { default: defaultSlot } = this.$slots
       return [
         type && createClass(classPrefix, type),
         size && createClass(classPrefix, size),
         (icon || loading) && iconPosition && createClass(classPrefix, 'icon-', iconPosition),
         !defaultSlot && createClass(classPrefix, 'icon-only'),
-        loading && createClass(classPrefix, 'loading')
+        loading && createClass(classPrefix, 'loading'),
+        status && createClass(classPrefix, status)
       ]
     }
   }
@@ -176,7 +184,6 @@ $icon-margin: 8px;
 
 .l-button-secondary {
   background-color: $color-fill;
-
   &:hover {
     background-color: $color-fill-dark;
   }
@@ -187,28 +194,109 @@ $icon-margin: 8px;
     background-color: $color-fill-light;
     color: $color-text-gray;
   }
+
+  &.l-button-success {
+    background-color: $color-success-1;
+    color: $color-success-6;
+    &:hover {
+      background-color: $color-success-2;
+    }
+    &:active {
+      background-color: $color-success-3;
+    }
+    &[disabled] {
+      background-color: $color-success-1;
+      color: $color-success-3;
+    }
+  }
+
+  &.l-button-warning {
+    background-color: $color-warning-1;
+    color: $color-warning-6;
+    &:hover {
+      background-color: $color-warning-2;
+    }
+    &:active {
+      background-color: $color-warning-3;
+    }
+    &[disabled] {
+      background-color: $color-warning-1;
+      color: $color-warning-3;
+    }
+  }
+
+  &.l-button-danger {
+    background-color: $color-danger-1;
+    color: $color-danger-6;
+    &:hover {
+      background-color: $color-danger-2;
+    }
+    &:active {
+      background-color: $color-danger-3;
+    }
+    &[disabled] {
+      background-color: $color-danger-1;
+      color: $color-danger-3;
+    }
+  }
 }
 
 .l-button-primary {
-  background-color: $color-primary;
+  background-color: $color-primary-6;
   color: #fff;
-
   &:hover {
-    background-color: $color-primary-hover;
+    background-color: $color-primary-5;
   }
   &:active {
-    background-color: $color-primary-active;
+    background-color: $color-primary-7;
   }
   &[disabled] {
-    background-color: $color-primary-disabled;
-    color: #fff;
+    background-color: $color-primary-3;
+  }
+
+  &.l-button-success {
+    background-color: $color-success-6;
+    &:hover {
+      background-color: $color-success-5;
+    }
+    &:active {
+      background-color: $color-success-7;
+    }
+    &[disabled] {
+      background-color: $color-success-3;
+    }
+  }
+
+  &.l-button-warning {
+    background-color: $color-warning-6;
+    &:hover {
+      background-color: $color-warning-5;
+    }
+    &:active {
+      background-color: $color-warning-7;
+    }
+    &[disabled] {
+      background-color: $color-warning-3;
+    }
+  }
+
+  &.l-button-danger {
+    background-color: $color-danger-6;
+    &:hover {
+      background-color: $color-danger-5;
+    }
+    &:active {
+      background-color: $color-danger-7;
+    }
+    &[disabled] {
+      background-color: $color-danger-3;
+    }
   }
 }
 
 .l-button-dashed {
   background-color: $color-fill;
   border: 1px dashed $color-fill-dark;
-
   &:hover {
     background-color: $color-fill-dark;
     border-color: $color-fill-darker;
@@ -219,44 +307,172 @@ $icon-margin: 8px;
   }
   &[disabled] {
     background-color: $color-fill;
-    border: 1px dashed $color-fill-dark;
+    border-color: $color-fill-dark;
     color: $color-text-gray;
+  }
+
+  &.l-button-success {
+    background-color: $color-success-1;
+    border-color: $color-success-2;
+    color: $color-success-6;
+    &:hover {
+      background-color: $color-success-2;
+      border-color: $color-success-3
+    }
+    &:active {
+      background-color: $color-success-3;
+      border-color: $color-success-5;
+    }
+    &[disabled] {
+      background-color: $color-success-1;
+      border-color: $color-success-2;
+      color: $color-success-3;
+    }
+  }
+
+  &.l-button-warning {
+    background-color: $color-warning-1;
+    border-color: $color-warning-2;
+    color: $color-warning-6;
+    &:hover {
+      background-color: $color-warning-2;
+      border-color: $color-warning-3
+    }
+    &:active {
+      background-color: $color-warning-3;
+      border-color: $color-warning-5;
+    }
+    &[disabled] {
+      background-color: $color-warning-1;
+      border-color: $color-warning-2;
+      color: $color-warning-3;
+    }
   }
 }
 
 .l-button-outline {
   background-color: #fff;
-  border: 1px solid $color-primary;
-  color: $color-primary;
-
+  border: 1px solid $color-primary-6;
+  color: $color-primary-6;
   &:hover {
-    border-color: $color-primary-hover;
-    color: $color-primary-hover;
+    border-color: $color-primary-5;
+    color: $color-primary-5;
   }
   &:active {
-    border-color: $color-primary-active;
-    color: $color-primary-active;
+    border-color: $color-primary-7;
+    color: $color-primary-7;
   }
   &[disabled] {
-    border: 1px solid $color-primary-disabled;
-    color: $color-primary-disabled;
+    border: 1px solid $color-primary-3;
+    color: $color-primary-3;
+  }
+
+  &.l-button-success {
+    border: 1px solid $color-success-6;
+    color: $color-success-6;
+    &:hover {
+      border-color: $color-success-5;
+      color: $color-success-5;
+    }
+    &:active {
+      border-color: $color-success-7;
+      color: $color-success-7;
+    }
+    &[disabled] {
+      border: 1px solid $color-success-3;
+      color: $color-success-3;
+    }
+  }
+
+  &.l-button-warning {
+    border: 1px solid $color-warning-6;
+    color: $color-warning-6;
+    &:hover {
+      border-color: $color-warning-5;
+      color: $color-warning-5;
+    }
+    &:active {
+      border-color: $color-warning-7;
+      color: $color-warning-7;
+    }
+    &[disabled] {
+      border: 1px solid $color-warning-3;
+      color: $color-warning-3;
+    }
+  }
+
+  &.l-button-danger {
+    border: 1px solid $color-danger-6;
+    color: $color-danger-6;
+    &:hover {
+      border-color: $color-danger-5;
+      color: $color-danger-5;
+    }
+    &:active {
+      border-color: $color-danger-7;
+      color: $color-danger-7;
+    }
+    &[disabled] {
+      border: 1px solid $color-danger-3;
+      color: $color-danger-3;
+    }
   }
 }
 
 .l-button-text {
   background-color: #fff;
-  color: $color-primary;
-
+  color: $color-primary-6;
   &:hover {
     background-color: $color-fill;
   }
   &:active {
     background-color: $color-fill-dark;
   }
-
   &[disabled] {
     background-color: #fff;
-    color: $color-primary-disabled;
+    color: $color-primary-3;
+  }
+
+  &.l-button-success {
+    color: $color-success-6;
+    &:hover {
+      background-color: $color-fill;
+    }
+    &:active {
+      background-color: $color-fill-dark;
+    }
+    &[disabled] {
+      background-color: #fff;
+      color: $color-success-3;
+    }
+  }
+
+  &.l-button-warning {
+    color: $color-warning-6;
+    &:hover {
+      background-color: $color-fill;
+    }
+    &:active {
+      background-color: $color-fill-dark;
+    }
+    &[disabled] {
+      background-color: #fff;
+      color: $color-warning-3;
+    }
+  }
+
+  &.l-button-danger {
+    color: $color-danger-6;
+    &:hover {
+      background-color: $color-fill;
+    }
+    &:active {
+      background-color: $color-fill-dark;
+    }
+    &[disabled] {
+      background-color: #fff;
+      color: $color-danger-3;
+    }
   }
 }
 </style>
