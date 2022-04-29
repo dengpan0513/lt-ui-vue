@@ -7,7 +7,7 @@
   >
     <l-icon v-if="loading" name="loading" spin class="l-button-icon" />
     <l-icon v-else :name="icon" class="l-button-icon" />
-    <span>
+    <span v-if="$slots.default" class="l-button-name">
       <slot />
     </span>
   </button>
@@ -70,10 +70,12 @@ export default {
   computed: {
     classList () {
       const { type, size, icon, iconPosition, loading } = this
+      const { default: defaultSlot } = this.$slots
       return [
         type && createClass(classPrefix, type),
         size && createClass(classPrefix, size),
         (icon || loading) && iconPosition && createClass(classPrefix, 'icon-', iconPosition),
+        !defaultSlot && createClass(classPrefix, 'icon-only'),
         loading && createClass(classPrefix, 'loading')
       ]
     }
@@ -109,31 +111,47 @@ $icon-margin: 8px;
 .l-button-medium {
   height: 32px;
   padding: 5px 16px;
+  &.l-button-icon-only {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
 }
 .l-button-large {
   height: 36px;
   padding: 7px 20px;
+  &.l-button-icon-only {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }
 .l-button-small {
   height: 28px;
   padding: 3px 16px;
+  &.l-button-icon-only {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
 }
 .l-button-mini {
   height: 24px;
   padding: 2px 12px;
   font-size: $font-size-small;
   line-height: 20px;
+  &.l-button-icon-only {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
 }
 
 .l-button-icon-left {
-  > .l-button-icon {
-    margin-right: $icon-margin;
+  > .l-button-name {
+    margin-left: $icon-margin;
   }
 }
 .l-button-icon-right {
-  > .l-button-icon {
-    order: 1;
-    margin-left: $icon-margin;
+  > .l-button-name {
+    order: -1;
+    margin-right: $icon-margin;
   }
 }
 
