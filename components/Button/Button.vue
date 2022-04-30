@@ -80,11 +80,15 @@ export default {
         const buttonShapeList = ['square', 'circle', 'round']
         return oneOf(value, buttonShapeList)
       }
+    },
+    long: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     classList () {
-      const { type, size, icon, iconPosition, loading, status, shape } = this
+      const { type, size, icon, iconPosition, loading, status, shape, long } = this
       const { default: defaultSlot } = this.$slots
       return [
         createClass(classPrefix, type),
@@ -93,7 +97,8 @@ export default {
         !defaultSlot && createClass(classPrefix, 'icon-only'),
         loading && createClass(classPrefix, 'loading'),
         status && createClass(classPrefix, status),
-        createClass(classPrefix, 'shape-', shape)
+        createClass(classPrefix, 'shape-', shape),
+        long && createClass(classPrefix, 'long')
       ]
     }
   }
@@ -213,6 +218,11 @@ $icon-margin: 8px;
     opacity: .4;
     cursor: default;
   }
+}
+
+.l-button-long {
+  display: flex;
+  width: 100%;
 }
 
 .l-button-secondary {
