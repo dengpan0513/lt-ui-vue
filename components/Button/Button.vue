@@ -72,19 +72,28 @@ export default {
         const buttonStatusList = ['success', 'warning', 'danger']
         return oneOf(value, buttonStatusList)
       }
+    },
+    shape: {
+      type: String,
+      default: 'square',
+      validator (value) {
+        const buttonShapeList = ['square', 'circle', 'round']
+        return oneOf(value, buttonShapeList)
+      }
     }
   },
   computed: {
     classList () {
-      const { type, size, icon, iconPosition, loading, status } = this
+      const { type, size, icon, iconPosition, loading, status, shape } = this
       const { default: defaultSlot } = this.$slots
       return [
-        type && createClass(classPrefix, type),
-        size && createClass(classPrefix, size),
+        createClass(classPrefix, type),
+        createClass(classPrefix, size),
         (icon || loading) && iconPosition && createClass(classPrefix, 'icon-', iconPosition),
         !defaultSlot && createClass(classPrefix, 'icon-only'),
         loading && createClass(classPrefix, 'loading'),
-        status && createClass(classPrefix, status)
+        status && createClass(classPrefix, status),
+        createClass(classPrefix, 'shape-', shape)
       ]
     }
   }
@@ -123,6 +132,12 @@ $icon-margin: 8px;
     padding-right: 8px;
     padding-left: 8px;
   }
+  &.l-button-shape-round {
+    border-radius: calc(32px * 0.5);
+  }
+  &.l-button-shape-circle {
+    border-radius: 50%;
+  }
 }
 .l-button-large {
   height: 36px;
@@ -131,6 +146,12 @@ $icon-margin: 8px;
     padding-right: 10px;
     padding-left: 10px;
   }
+  &.l-button-shape-round {
+    border-radius: calc(36px * 0.5);
+  }
+  &.l-button-shape-circle {
+    border-radius: 50%;
+  }
 }
 .l-button-small {
   height: 28px;
@@ -138,6 +159,12 @@ $icon-margin: 8px;
   &.l-button-icon-only {
     padding-right: 6px;
     padding-left: 6px;
+  }
+  &.l-button-shape-round {
+    border-radius: calc(28px * 0.5);
+  }
+  &.l-button-shape-circle {
+    border-radius: 50%;
   }
 }
 .l-button-mini {
@@ -148,6 +175,12 @@ $icon-margin: 8px;
   &.l-button-icon-only {
     padding-right: 5px;
     padding-left: 5px;
+  }
+  &.l-button-shape-round {
+    border-radius: calc(24px * 0.5);
+  }
+  &.l-button-shape-circle {
+    border-radius: 50%;
   }
 }
 
