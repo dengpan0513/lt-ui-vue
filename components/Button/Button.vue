@@ -210,7 +210,6 @@ $icon-margin: 8px;
 .l-button-loading {
   position: relative;
   pointer-events: none;
-
   &::before {
     content: "";
     position: absolute;
@@ -395,6 +394,25 @@ $icon-margin: 8px;
       background-color: $color-warning-1;
       border-color: $color-warning-2;
       color: $color-warning-3;
+    }
+  }
+
+  &.l-button-danger {
+    background-color: $color-danger-1;
+    border-color: $color-danger-2;
+    color: $color-danger-6;
+    &:hover {
+      background-color: $color-danger-2;
+      border-color: $color-danger-3
+    }
+    &:active {
+      background-color: $color-danger-3;
+      border-color: $color-danger-5;
+    }
+    &[disabled] {
+      background-color: $color-danger-1;
+      border-color: $color-danger-2;
+      color: $color-danger-3;
     }
   }
 }
