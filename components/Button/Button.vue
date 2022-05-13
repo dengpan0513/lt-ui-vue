@@ -4,6 +4,7 @@
     :type="htmlType"
     :disabled="disabled"
     class="l-button"
+    @click="onClick"
   >
     <l-icon v-if="loading" name="loading" spin class="l-button-icon" />
     <l-icon v-else :name="icon" class="l-button-icon" />
@@ -100,6 +101,11 @@ export default {
         createClass(classPrefix, 'shape-', shape),
         long && createClass(classPrefix, 'long')
       ]
+    }
+  },
+  methods: {
+    onClick (event) {
+      this.$emit('click', event)
     }
   }
 }
