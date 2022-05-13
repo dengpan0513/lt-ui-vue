@@ -130,7 +130,6 @@ $icon-margin: 8px;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-
   &[disabled] {
     cursor: not-allowed;
   }
@@ -238,6 +237,11 @@ $icon-margin: 8px;
   &:active {
     background-color: $color-fill-darker;
   }
+  &:focus-visible {
+    border-color: $color-fill-darker;
+    box-shadow: 0 0 3px $color-fill-darker;
+    outline: 0;
+  }
   &[disabled] {
     background-color: $color-fill-light;
     color: $color-text-gray;
@@ -251,6 +255,11 @@ $icon-margin: 8px;
     }
     &:active {
       background-color: $color-success-3;
+    }
+    &:focus-visible {
+      border-color: $color-success-7;
+      box-shadow: 0 0 3px $color-success-7;
+      outline: 0;
     }
     &[disabled] {
       background-color: $color-success-1;
@@ -267,6 +276,11 @@ $icon-margin: 8px;
     &:active {
       background-color: $color-warning-3;
     }
+    &:focus-visible {
+      border-color: $color-warning-7;
+      box-shadow: 0 0 3px $color-warning-7;
+      outline: 0;
+    }
     &[disabled] {
       background-color: $color-warning-1;
       color: $color-warning-3;
@@ -281,6 +295,11 @@ $icon-margin: 8px;
     }
     &:active {
       background-color: $color-danger-3;
+    }
+    &:focus-visible {
+      border-color: $color-danger-7;
+      box-shadow: 0 0 3px $color-danger-7;
+      outline: 0;
     }
     &[disabled] {
       background-color: $color-danger-1;
@@ -298,6 +317,11 @@ $icon-margin: 8px;
   &:active {
     background-color: $color-primary-7;
   }
+  &:focus-visible {
+    border-color: $color-primary-7;
+    box-shadow: 0 0 3px $color-primary-7;
+    outline: 0;
+  }
   &[disabled] {
     background-color: $color-primary-3;
   }
@@ -309,6 +333,11 @@ $icon-margin: 8px;
     }
     &:active {
       background-color: $color-success-7;
+    }
+    &:focus-visible {
+      border-color: $color-success-7;
+      box-shadow: 0 0 3px $color-success-7;
+      outline: 0;
     }
     &[disabled] {
       background-color: $color-success-3;
@@ -323,6 +352,11 @@ $icon-margin: 8px;
     &:active {
       background-color: $color-warning-7;
     }
+    &:focus-visible {
+      border-color: $color-warning-7;
+      box-shadow: 0 0 3px $color-warning-7;
+      outline: 0;
+    }
     &[disabled] {
       background-color: $color-warning-3;
     }
@@ -335,6 +369,11 @@ $icon-margin: 8px;
     }
     &:active {
       background-color: $color-danger-7;
+    }
+    &:focus-visible {
+      border-color: $color-danger-7;
+      box-shadow: 0 0 3px $color-danger-7;
+      outline: 0;
     }
     &[disabled] {
       background-color: $color-danger-3;
@@ -353,6 +392,11 @@ $icon-margin: 8px;
     background-color: $color-fill-darker;
     border-color: $color-text-light;
   }
+  &:focus-visible {
+    border-color: $color-fill-darker;
+    box-shadow: 0 0 3px $color-fill-darker;
+    outline: 0;
+  }
   &[disabled] {
     background-color: $color-fill;
     border-color: $color-fill-dark;
@@ -370,6 +414,11 @@ $icon-margin: 8px;
     &:active {
       background-color: $color-success-3;
       border-color: $color-success-5;
+    }
+    &:focus-visible {
+      border-color: $color-success-7;
+      box-shadow: 0 0 3px $color-success-7;
+      outline: 0;
     }
     &[disabled] {
       background-color: $color-success-1;
@@ -390,6 +439,11 @@ $icon-margin: 8px;
       background-color: $color-warning-3;
       border-color: $color-warning-5;
     }
+    &:focus-visible {
+      border-color: $color-warning-7;
+      box-shadow: 0 0 3px $color-warning-7;
+      outline: 0;
+    }
     &[disabled] {
       background-color: $color-warning-1;
       border-color: $color-warning-2;
@@ -408,6 +462,11 @@ $icon-margin: 8px;
     &:active {
       background-color: $color-danger-3;
       border-color: $color-danger-5;
+    }
+    &:focus-visible {
+      border-color: $color-danger-7;
+      box-shadow: 0 0 3px $color-danger-7;
+      outline: 0;
     }
     &[disabled] {
       background-color: $color-danger-1;
@@ -429,6 +488,11 @@ $icon-margin: 8px;
     border-color: $color-primary-7;
     color: $color-primary-7;
   }
+  &:focus-visible {
+    border-color: $color-primary-7;
+    box-shadow: 0 0 3px $color-primary-7;
+    outline: 0;
+  }
   &[disabled] {
     border: 1px solid $color-primary-3;
     color: $color-primary-3;
@@ -444,6 +508,11 @@ $icon-margin: 8px;
     &:active {
       border-color: $color-success-7;
       color: $color-success-7;
+    }
+    &:focus-visible {
+      border-color: $color-success-7;
+      box-shadow: 0 0 3px $color-success-7;
+      outline: 0;
     }
     &[disabled] {
       border: 1px solid $color-success-3;
@@ -462,6 +531,11 @@ $icon-margin: 8px;
       border-color: $color-warning-7;
       color: $color-warning-7;
     }
+    &:focus-visible {
+      border-color: $color-warning-7;
+      box-shadow: 0 0 3px $color-warning-7;
+      outline: 0;
+    }
     &[disabled] {
       border: 1px solid $color-warning-3;
       color: $color-warning-3;
@@ -479,6 +553,11 @@ $icon-margin: 8px;
       border-color: $color-danger-7;
       color: $color-danger-7;
     }
+    &:focus-visible {
+      border-color: $color-danger-7;
+      box-shadow: 0 0 3px $color-danger-7;
+      outline: 0;
+    }
     &[disabled] {
       border: 1px solid $color-danger-3;
       color: $color-danger-3;
@@ -494,6 +573,10 @@ $icon-margin: 8px;
   }
   &:active {
     background-color: $color-fill-dark;
+  }
+  &:focus-visible {
+    background-color: $color-fill;
+    outline: 0;
   }
   &[disabled] {
     background-color: #fff;
