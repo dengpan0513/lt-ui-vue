@@ -1,9 +1,11 @@
 import '../icons/index.js'
 import '~/styles/reset.scss'
 import Icon from '~/Icon/index.js'
+import Button from '~/Button/index.js'
 
 const components = [
-  Icon
+  Icon,
+  Button
 ]
 
 const install = Vue => {
