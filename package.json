@@ -1,6 +1,6 @@
 {
   "name": "lt-ui-vue",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "title": "lt-ui-vue",
   "description": "A Vue ui components for web",
   "keywords": ["lt-ui", "vue", "components"],
