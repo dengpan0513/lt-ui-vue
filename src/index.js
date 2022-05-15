@@ -2,10 +2,12 @@ import '../icons/index.js'
 import '~/styles/reset.scss'
 import Icon from '~/Icon/index.js'
 import Button from '~/Button/index.js'
+import ButtonGroup from '~/ButtonGroup/index.js'
 
 const components = [
   Icon,
-  Button
+  Button,
+  ButtonGroup
 ]
 
 const install = Vue => {
