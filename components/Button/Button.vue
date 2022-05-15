@@ -28,16 +28,16 @@ export default {
       type: String,
       default: 'secondary',
       validator (value) {
-        const buttonTypeList = ['secondary', 'primary', 'dashed', 'outline', 'text']
-        return oneOf(value, buttonTypeList)
+        const typeList = ['secondary', 'primary', 'dashed', 'outline', 'text']
+        return oneOf(value, typeList)
       }
     },
     size: {
       type: String,
       default: 'medium',
       validator (value) {
-        const buttonSizeType = ['large', 'medium', 'small', 'mini']
-        return oneOf(value, buttonSizeType)
+        const sizeList = ['large', 'medium', 'small', 'mini']
+        return oneOf(value, sizeList)
       }
     },
     htmlType: {
@@ -70,16 +70,16 @@ export default {
     status: {
       type: String,
       validator (value) {
-        const buttonStatusList = ['success', 'warning', 'danger']
-        return oneOf(value, buttonStatusList)
+        const statusList = ['success', 'warning', 'danger']
+        return oneOf(value, statusList)
       }
     },
     shape: {
       type: String,
       default: 'square',
       validator (value) {
-        const buttonShapeList = ['square', 'circle', 'round']
-        return oneOf(value, buttonShapeList)
+        const shapeList = ['square', 'circle', 'round']
+        return oneOf(value, shapeList)
       }
     },
     long: {
