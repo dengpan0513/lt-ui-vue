@@ -22,7 +22,7 @@ const classPrefix = 'l-button-'
 
 export default {
   name: 'LButton',
-  component: { LIcon },
+  components: { LIcon },
   props: {
     type: {
       type: String,
