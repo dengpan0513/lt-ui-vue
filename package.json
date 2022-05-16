@@ -1,6 +1,6 @@
 {
   "name": "lt-ui-vue",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "title": "lt-ui-vue",
   "description": "A Vue ui components for web",
   "keywords": ["lt-ui", "vue", "components"],
@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "yarn svgo && vue-cli-service build --target lib --dest lib --name lt-ui-vue src/index.js && rm ./lib/demo.html",
+    "build": "yarn svgo && vue-cli-service build --target lib --dest dist --name lt-ui-vue src/index.js && rm ./dist/demo.html",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "svgo": "svgo -f icons/svgs --config=icons/svgo.config.js"
