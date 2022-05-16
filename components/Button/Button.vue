@@ -113,7 +113,6 @@ export default {
 
 <style lang="scss" scoped>
 @use "../styles/variable.scss" as *;
-$border-radius: 2px;
 $icon-margin: 8px;
 @mixin button-size($height, $padding, $padding-icon-only, $is-mini: fasle) {
   height: $height;
@@ -236,7 +235,7 @@ $icon-margin: 8px;
   justify-content: center;
   align-items: center;
   border: 1px solid transparent;
-  border-radius: $border-radius;
+  border-radius: $border-radius-small;
   line-height: 1.5715;
   font-size: 14px;
   color: $color-text;
