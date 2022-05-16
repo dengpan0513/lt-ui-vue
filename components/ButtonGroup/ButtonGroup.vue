@@ -21,7 +21,6 @@ export default {
 
 <style lang="scss" scoped>
 @use "../styles/variable.scss" as *;
-$border-radius: 2px;
 @mixin border-color ($bdc) {
   border-left-color: $bdc;
 }
