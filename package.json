@@ -1,6 +1,6 @@
 {
   "name": "lt-ui-vue",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "title": "lt-ui-vue",
   "description": "A Vue ui components for web",
   "keywords": ["lt-ui", "vue", "components"],
@@ -14,11 +14,11 @@
     "url": "git+https://github.com/dengdengdengpan/lt-ui-vue.git"
   },
   "homepage": "https://github.com/dengdengdengpan/lt-ui-vue#readme",
-  "main": "lib/lt-ui-vue.common.js",
+  "main": "dist/lt-ui-vue.common.js",
   "files": [
     "components",
     "icons",
-    "lib",
+    "dist",
     "src/utils",
     "src/index.js"
   ],
