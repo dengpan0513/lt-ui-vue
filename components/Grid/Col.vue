@@ -35,8 +35,9 @@ export default {
   computed: {
     classList () {
       const { span, offset, push, pull, order } = this
+      const classSpan = span === 0 ? `${classPrefix}0` : span && createClass(classPrefix, span)
       return [
-        span && createClass(classPrefix, span),
+        classSpan,
         offset && createClass(classPrefix, 'offset-', offset),
         push && createClass(classPrefix, 'push-', push),
         pull && createClass(classPrefix, 'pull-', pull),
@@ -96,5 +97,8 @@ export default {
 .l-col {
   flex-shrink: 0;
   position: relative;
+  &.l-col-0 {
+    display: none;
+  }
 }
 </style>
