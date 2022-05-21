@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import Row from '~/Grid/Row.vue'
-import Col from '~/Grid/Col.vue'
+import Row from '~/Row/Row.vue'
+import Col from '~/Col/Col.vue'
 
 const factoryRow = propsData => {
   return mount(Row, {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { createClass, oneOf } from '@/utils/index.js'
+import { createClass, oneOf } from '@/utils'
 const classPrefix = 'l-col-'
 const validator = value => {
   let valid = true

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Col from '~/Grid/Col.vue'
+import Col from '~/Col/Col.vue'
 
 const factoryCol = propsData => {
   return mount(Col, {
