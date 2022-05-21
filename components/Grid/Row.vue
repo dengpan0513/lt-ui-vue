@@ -57,6 +57,18 @@ export default {
         !wrap && createClass(classPrefix, 'no-wrap')
       ]
     }
+  },
+  mounted () {
+    this.checkChild()
+  },
+  methods: {
+    checkChild () {
+      for (let i = 0; i < this.$el.children.length; i++) {
+        if (!this.$el.children.item(i).classList.contains('l-col')) {
+          console.warn('LRow 组件的直接子组件应该是 LCol')
+        }
+      }
+    }
   }
 }
 </script>
