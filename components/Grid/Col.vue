@@ -1,5 +1,5 @@
 <template>
-  <div :class="classList" class="l-col">
+  <div :class="classList" :style="styleObjet" class="l-col">
     <slot />
   </div>
 </template>
@@ -27,6 +27,11 @@ export default {
       type: Number
     }
   },
+  data () {
+    return {
+      gutterParent: 0
+    }
+  },
   computed: {
     classList () {
       const { span, offset, push, pull, order } = this
@@ -37,6 +42,31 @@ export default {
         pull && createClass(classPrefix, 'pull-', pull),
         order && createClass(classPrefix, 'order-', order)
       ]
+    },
+    styleObjet () {
+      const { gutterParent } = this
+      let stylePadding = null
+      if (gutterParent) {
+        const gap = (gutterParent / 2) + 'px'
+        stylePadding = {
+          paddingRight: gap,
+          paddingLeft: gap
+        }
+      }
+      return gutterParent ? stylePadding : null
+    }
+  },
+  created () {
+    this.getGutter()
+  },
+  methods: {
+    getGutter () {
+      const parent = this.$parent
+      if (parent) {
+        const { name } = parent.$options
+        const { gutter } = parent
+        this.gutterParent = name === 'LRow' ? gutter : 0
+      }
     }
   }
 }
