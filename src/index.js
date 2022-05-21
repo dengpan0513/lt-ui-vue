@@ -4,12 +4,16 @@ import Icon from '~/Icon/index.js'
 import Button from '~/Button/index.js'
 import ButtonGroup from '~/ButtonGroup/index.js'
 import Link from '~/Link/index.js'
+import Row from '~/Row/index.js'
+import Col from '~/Col/index.js'
 
 const components = [
   Icon,
   Button,
   ButtonGroup,
-  Link
+  Link,
+  Row,
+  Col
 ]
 
 const install = Vue => {
