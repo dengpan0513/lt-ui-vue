@@ -6,6 +6,7 @@ import ButtonGroup from '~/ButtonGroup/index.js'
 import Link from '~/Link/index.js'
 import Row from '~/Row/index.js'
 import Col from '~/Col/index.js'
+import Divider from '~/Divider/index.js'
 
 const components = [
   Icon,
@@ -13,7 +14,8 @@ const components = [
   ButtonGroup,
   Link,
   Row,
-  Col
+  Col,
+  Divider
 ]
 
 const install = Vue => {
