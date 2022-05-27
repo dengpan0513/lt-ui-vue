@@ -14,7 +14,5 @@ export default {
 .l-layout-header {
   flex-shrink: 0;
   height: 64px;
-  padding-right: 50px;
-  padding-left: 50px;
 }
 </style>

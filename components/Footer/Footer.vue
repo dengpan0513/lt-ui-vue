@@ -15,7 +15,8 @@ export default {
 
 .l-layout-footer {
   flex-shrink: 0;
-  padding: 16px 50px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   font-size: $font-size-small;
 }
 </style>
