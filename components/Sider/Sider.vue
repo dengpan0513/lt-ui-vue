@@ -1,10 +1,11 @@
 <template>
-  <aside :style="styleObject" :class="classList" class="l-layout-sider">
+  <aside :style="styleWidth" :class="classList" class="l-layout-sider">
     <div class="l-layout-sider-children">
       <slot />
     </div>
     <div
       v-if="collapsible"
+      :style="styleWidth"
       :class="classListTrigger"
       class="l-layout-sider-trigger"
       @click="onClickTrigger"
@@ -58,13 +59,6 @@ export default {
     }
   },
   computed: {
-    styleObject () {
-      const { width } = this
-      const widthValue = typeof width === 'number' ? `${width}px` : width
-      return {
-        width: widthValue
-      }
-    },
     classList () {
       const { theme, collapsible } = this
       return [
@@ -87,6 +81,14 @@ export default {
         console.log('set', value)
         this.$emit('update:collapsed', value)
       }
+    },
+    styleWidth () {
+      const { isCollapsed, width, collapsedWidth } = this
+      const widthReal = isCollapsed ? collapsedWidth : width
+      const widthValue = typeof widthReal === 'number' ? `${widthReal}px` : widthReal
+      return {
+        width: widthValue
+      }
     }
   },
   methods: {
@@ -101,10 +103,12 @@ export default {
 
 <style lang="scss" scoped>
 @use "../styles/variable.scss" as *;
+$transition-width: width .2s cubic-bezier(.34, .69, .1, 1);
 
 .l-layout-sider {
   flex-shrink: 0;
   position: relative;
+  transition: $transition-width;
 }
 .l-layout-sider-can-collapse {
   padding-bottom: 48px;
@@ -124,6 +128,7 @@ export default {
   text-align: center;
   z-index: 1;
   cursor: pointer;
+  transition: $transition-width;
   &.l-layout-sider-trigger-light {
     background-color: #fff;
     color: $color-text-dark;
