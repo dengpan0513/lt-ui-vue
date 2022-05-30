@@ -80,11 +80,15 @@ export default {
     }
   },
   computed: {
+    visibleTrigger () {
+      const { collapsible, hideTrigger } = this
+      return collapsible && !hideTrigger
+    },
     classList () {
-      const { theme, collapsible } = this
+      const { theme, visibleTrigger } = this
       return [
         createClass(classPrefix, theme),
-        collapsible && createClass(classPrefix, 'can-collapse')
+        visibleTrigger && createClass(classPrefix, 'can-collapse')
       ]
     },
     classListTrigger () {
@@ -92,10 +96,6 @@ export default {
       return [
         collapsible && createClass(classPrefix, 'trigger-', theme)
       ]
-    },
-    visibleTrigger () {
-      const { collapsible, hideTrigger } = this
-      return collapsible && !hideTrigger
     },
     styleWidth () {
       const { collapsedLocal, width, collapsedWidth } = this
