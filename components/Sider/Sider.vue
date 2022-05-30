@@ -10,14 +10,16 @@
       class="l-layout-sider-trigger"
       @click="onClickTrigger"
     >
-      <template v-if="!reverseArrow">
-        <l-icon v-if="!collapsedLocal" name="left" />
-        <l-icon v-else name="right" />
-      </template>
-      <template v-else>
-        <l-icon v-if="collapsedLocal" name="left" />
-        <l-icon v-else name="right" />
-      </template>
+      <slot name="trigger" :collapsed="collapsedLocal">
+        <template v-if="!reverseArrow">
+          <l-icon v-if="!collapsedLocal" name="left" />
+          <l-icon v-else name="right" />
+        </template>
+        <template v-else>
+          <l-icon v-if="collapsedLocal" name="left" />
+          <l-icon v-else name="right" />
+        </template>
+      </slot>
     </div>
   </aside>
 </template>
