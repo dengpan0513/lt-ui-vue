@@ -4,14 +4,20 @@
       <slot />
     </div>
     <div
-      v-if="collapsible"
+      v-if="visibleTrigger"
       :style="styleWidth"
       :class="classListTrigger"
       class="l-layout-sider-trigger"
       @click="onClickTrigger"
     >
-      <l-icon v-if="!isCollapsed" name="left" />
-      <l-icon v-else name="right" />
+      <template v-if="!reverseArrow">
+        <l-icon v-if="!isCollapsed" name="left" />
+        <l-icon v-else name="right" />
+      </template>
+      <template v-else>
+        <l-icon v-if="isCollapsed" name="left" />
+        <l-icon v-else name="right" />
+      </template>
     </div>
   </aside>
 </template>
@@ -45,6 +51,10 @@ export default {
       type: Boolean,
       default: false
     },
+    hideTrigger: {
+      type: Boolean,
+      default: false
+    },
     collapsed: {
       type: Boolean,
       default: undefined
@@ -56,6 +66,10 @@ export default {
     collapsedWidth: {
       type: [Number, String],
       default: 48
+    },
+    reverseArrow: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -72,18 +86,23 @@ export default {
         collapsible && createClass(classPrefix, 'trigger-', theme)
       ]
     },
+    visibleTrigger () {
+      const { collapsible, hideTrigger } = this
+      return collapsible && !hideTrigger
+    },
     isCollapsed: {
       get () {
         const { collapsed, defaultCollapsed } = this
         return collapsed !== undefined ? collapsed : defaultCollapsed
       },
       set (value) {
-        console.log('set', value)
+        console.log('setter', value)
         this.$emit('update:collapsed', value)
       }
     },
     styleWidth () {
       const { isCollapsed, width, collapsedWidth } = this
+      console.log('isCollapsed', isCollapsed)
       const widthReal = isCollapsed ? collapsedWidth : width
       const widthValue = typeof widthReal === 'number' ? `${widthReal}px` : widthReal
       return {
@@ -93,7 +112,7 @@ export default {
   },
   methods: {
     onClickTrigger () {
-      console.log('click', this.isCollapsed)
+      console.log('click trigger', this.isCollapsed)
       this.isCollapsed = !this.isCollapsed
       this.$emit('collapse')
     }
