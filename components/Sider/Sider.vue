@@ -11,11 +11,11 @@
       @click="onClickTrigger"
     >
       <template v-if="!reverseArrow">
-        <l-icon v-if="!isCollapsed" name="left" />
+        <l-icon v-if="!collapsedLocal" name="left" />
         <l-icon v-else name="right" />
       </template>
       <template v-else>
-        <l-icon v-if="isCollapsed" name="left" />
+        <l-icon v-if="collapsedLocal" name="left" />
         <l-icon v-else name="right" />
       </template>
     </div>
@@ -72,6 +72,13 @@ export default {
       default: false
     }
   },
+  data () {
+    const { collapsed, defaultCollapsed } = this
+    const collapsedLocal = collapsed !== undefined ? collapsed : defaultCollapsed
+    return {
+      collapsedLocal
+    }
+  },
   computed: {
     classList () {
       const { theme, collapsible } = this
@@ -90,20 +97,9 @@ export default {
       const { collapsible, hideTrigger } = this
       return collapsible && !hideTrigger
     },
-    isCollapsed: {
-      get () {
-        const { collapsed, defaultCollapsed } = this
-        return collapsed !== undefined ? collapsed : defaultCollapsed
-      },
-      set (value) {
-        console.log('setter', value)
-        this.$emit('update:collapsed', value)
-      }
-    },
     styleWidth () {
-      const { isCollapsed, width, collapsedWidth } = this
-      console.log('isCollapsed', isCollapsed)
-      const widthReal = isCollapsed ? collapsedWidth : width
+      const { collapsedLocal, width, collapsedWidth } = this
+      const widthReal = collapsedLocal ? collapsedWidth : width
       const widthValue = typeof widthReal === 'number' ? `${widthReal}px` : widthReal
       return {
         width: widthValue
@@ -112,8 +108,8 @@ export default {
   },
   methods: {
     onClickTrigger () {
-      console.log('click trigger', this.isCollapsed)
-      this.isCollapsed = !this.isCollapsed
+      this.collapsedLocal = !this.collapsedLocal
+      this.$emit('update:collapsed', this.collapsedLocal)
       this.$emit('collapse')
     }
   }
