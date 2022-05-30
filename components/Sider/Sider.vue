@@ -110,7 +110,7 @@ export default {
     onClickTrigger () {
       this.collapsedLocal = !this.collapsedLocal
       this.$emit('update:collapsed', this.collapsedLocal)
-      this.$emit('collapse')
+      this.$emit('collapse', this.collapsedLocal, 'clickTrigger')
     }
   }
 }
