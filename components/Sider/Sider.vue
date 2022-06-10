@@ -94,9 +94,9 @@ export default {
       ]
     },
     classListTrigger () {
-      const { collapsible, theme } = this
+      const { visibleTrigger, theme } = this
       return [
-        collapsible && createClass(classPrefix, 'trigger-', theme)
+        visibleTrigger && createClass(classPrefix, 'trigger-', theme)
       ]
     },
     styleWidth () {
