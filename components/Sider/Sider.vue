@@ -28,6 +28,14 @@
 import LIcon from '../Icon/Icon.vue'
 import { oneOf, createClass } from '@/utils/index.js'
 const classPrefix = 'l-layout-sider-'
+const breakpointMap = {
+  xs: '480px',
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
+  xl: '1200px',
+  xxl: '1600px'
+}
 
 export default {
   name: 'LSider',
@@ -72,13 +80,22 @@ export default {
     reverseArrow: {
       type: Boolean,
       default: false
+    },
+    breakpoint: {
+      type: String,
+      default: undefined,
+      validator (value) {
+        const breakpointList = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+        return oneOf(value, breakpointList)
+      }
     }
   },
   data () {
     const { collapsed, defaultCollapsed } = this
     const collapsedLocal = collapsed !== undefined ? collapsed : defaultCollapsed
     return {
-      collapsedLocal
+      collapsedLocal,
+      mql: null
     }
   },
   computed: {
@@ -108,11 +125,39 @@ export default {
       }
     }
   },
+  mounted () {
+    this.handleBreakpoint()
+  },
+  beforeDestroy () {
+    this.mql?.removeEventListener('change', this.onResponsiveTrigger)
+  },
   methods: {
-    onClickTrigger () {
-      this.collapsedLocal = !this.collapsedLocal
+    setCollapsed (collapsed, type) {
+      this.collapsedLocal = !collapsed
       this.$emit('update:collapsed', this.collapsedLocal)
-      this.$emit('collapse', this.collapsedLocal, 'clickTrigger')
+      this.$emit('collapse', this.collapsedLocal, type)
+      if (type === 'responsiveTrigger') {
+        this.$emit('breakpoint', this.collapsedLocal)
+      }
+    },
+    onClickTrigger () {
+      this.setCollapsed(this.collapsedLocal, 'clickTrigger')
+    },
+    onResponsiveTrigger (mql) {
+      const { matches } = mql
+      this.setCollapsed(matches, 'responsiveTrigger')
+    },
+    handleBreakpoint () {
+      if (typeof window !== 'undefined') {
+        const { matchMedia } = window
+        const { breakpoint } = this
+        if (matchMedia && breakpoint && breakpoint in breakpointMap) {
+          const minWidth = breakpointMap[this.breakpoint]
+          this.mql = matchMedia(`(min-width: ${minWidth})`)
+          this.mql.addEventListener('change', this.onResponsiveTrigger)
+          this.onResponsiveTrigger(this.mql)
+        }
+      }
     }
   }
 }
