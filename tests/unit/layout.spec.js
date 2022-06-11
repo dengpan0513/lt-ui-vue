@@ -43,7 +43,6 @@ describe('Layout', () => {
     `
     wrapper = factoryLayout(defaultSlot)
     await new Promise(resolve => setTimeout(resolve, 0))
-    console.log(wrapper.html())
     expect(wrapper.find('.l-layout').classes()).toContain('l-layout-has-sider')
   })
 })
