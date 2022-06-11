@@ -125,6 +125,11 @@ export default {
       }
     }
   },
+  watch: {
+    collapsed (newValue) {
+      this.collapsedLocal = newValue
+    }
+  },
   mounted () {
     this.handleBreakpoint()
   },
