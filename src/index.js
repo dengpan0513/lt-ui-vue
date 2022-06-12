@@ -7,6 +7,11 @@ import Link from '~/Link/index.js'
 import Row from '~/Row/index.js'
 import Col from '~/Col/index.js'
 import Divider from '~/Divider/index.js'
+import Layout from '~/Layout/index.js'
+import Header from '~/Header/index.js'
+import Sider from '~/Sider/index.js'
+import Content from '~/Content/index.js'
+import Footer from '~/Footer/index.js'
 
 const components = [
   Icon,
@@ -15,7 +20,12 @@ const components = [
   Link,
   Row,
   Col,
-  Divider
+  Divider,
+  Layout,
+  Header,
+  Sider,
+  Content,
+  Footer
 ]
 
 const install = Vue => {
