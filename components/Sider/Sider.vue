@@ -137,11 +137,17 @@ export default {
     this.mql?.removeEventListener('change', this.onResponsiveTrigger)
   },
   methods: {
+    emitCollapse (collapsed, type) {
+      this.$emit('collapse', collapsed, type)
+    },
     setCollapsed (collapsed, type) {
       this.collapsedLocal = !collapsed
       this.$emit('update:collapsed', this.collapsedLocal)
-      this.$emit('collapse', this.collapsedLocal, type)
-      if (type === 'responsiveTrigger') {
+      if (type === 'clickTrigger') {
+        this.emitCollapse(this.collapsedLocal, type)
+      }
+      if (type === 'responsiveTrigger' && !collapsed) {
+        this.emitCollapse(this.collapsedLocal, type)
         this.$emit('breakpoint', this.collapsedLocal)
       }
     },
