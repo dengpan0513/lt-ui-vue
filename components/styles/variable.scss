@@ -51,6 +51,11 @@ $border-radius-medium: 2px;
 $border-radius-large: 2px;
 
 // flex
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @mixin flex-align-center {
   display: flex;
   align-items: center;
