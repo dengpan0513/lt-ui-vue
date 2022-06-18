@@ -56,7 +56,11 @@ $border-radius-large: 2px;
   justify-content: center;
   align-items: center;
 }
-@mixin flex-align-center {
+@mixin flex-center-horizontal {
+  display: flex;
+  justify-content: center;
+}
+@mixin flex-center-vertical {
   display: flex;
   align-items: center;
 }
