@@ -50,3 +50,8 @@ $border-radius-small: 2px;
 $border-radius-medium: 2px;
 $border-radius-large: 2px;
 
+// flex
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
