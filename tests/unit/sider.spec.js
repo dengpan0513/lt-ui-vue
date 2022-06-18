@@ -197,7 +197,7 @@ describe('Sider', () => {
           components: { 'l-layout': Layout, 'l-sider': Sider, 'l-content': Content },
           template: `
             <l-layout>
-              <l-sider collapsible breakpoint="xs" @collapse="handleBreakPoint">sider</l-sider>
+              <l-sider collapsible breakpoint="md" @collapse="handleBreakPoint">sider</l-sider>
               <l-content>content</l-content>
             </l-layout>
           `,
@@ -210,7 +210,7 @@ describe('Sider', () => {
           }
         })
         await wrapper.vm.$nextTick()
-        expect(status).toBe(false)
+        expect(status).toBe(true)
         expect(triggerType).toEqual('responsiveTrigger')
         expect(spy).toHaveBeenCalled()
       })
