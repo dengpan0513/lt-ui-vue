@@ -12,6 +12,7 @@ import Header from '~/Header/index.js'
 import Sider from '~/Sider/index.js'
 import Content from '~/Content/index.js'
 import Footer from '~/Footer/index.js'
+import Space from '~/Space/index.js'
 
 const components = [
   Icon,
@@ -25,7 +26,8 @@ const components = [
   Header,
   Sider,
   Content,
-  Footer
+  Footer,
+  Space
 ]
 
 const install = Vue => {
