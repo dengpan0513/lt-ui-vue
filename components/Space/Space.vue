@@ -77,8 +77,8 @@ export default {
           large: 24
         }
         const sizeDefault = sizeMap.small
-        const gapCol = typeof size[0] === 'undefined' ? (typeof size[0] === 'number' ? size[0] : sizeMap[size[0]]) : sizeDefault
-        const gapRow = typeof size[1] === 'undefined' ? (typeof size[1] === 'number' ? size[0] : sizeMap[size[1]]) : sizeDefault
+        const gapCol = typeof size[0] !== 'undefined' ? (typeof size[0] === 'number' ? size[0] : sizeMap[size[0]]) : sizeDefault
+        const gapRow = typeof size[1] !== 'undefined' ? (typeof size[1] === 'number' ? size[1] : sizeMap[size[1]]) : sizeDefault
         gapStyle.gap = `${gapRow}px ${gapCol}px`
       }
       return {
