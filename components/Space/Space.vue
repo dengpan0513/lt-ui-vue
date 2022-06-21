@@ -93,8 +93,13 @@ export default {
     const slotsSplit = this.$slots.split
     let splitNode = null
     if (this.split && !slotsSplit) {
+      const { direction } = this
+      const dividerDirectMap = {
+        horizontal: 'vertical',
+        vertical: 'horizontal'
+      }
       splitNode = h(LDivider, {
-        props: { direction: 'vertical' }
+        props: { direction: dividerDirectMap[direction] }
       })
     } else if (slotsSplit) {
       splitNode = slotsSplit
