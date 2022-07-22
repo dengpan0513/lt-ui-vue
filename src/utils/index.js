@@ -17,3 +17,16 @@ export const createClass = function () {
 export const oneOf = (value, validArray) => {
   return validArray.includes(value)
 }
+
+/**
+ * @description 删除对象中属性值为 undefined 的属性
+ * @param {Object} object
+ * @returns {Object}
+ */
+export const deleteUndefinedKeys = object => {
+  for (const key in object) {
+    if (object[key] === undefined) {
+      delete object[key]
+    }
+  }
+}
