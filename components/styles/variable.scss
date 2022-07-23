@@ -51,16 +51,16 @@ $border-radius-medium: 2px;
 $border-radius-large: 2px;
 
 // flex
-@mixin flex-center {
-  display: flex;
+@mixin flex-center ($flex-type: flex) {
+  display: $flex-type;
   justify-content: center;
   align-items: center;
 }
-@mixin flex-center-horizontal {
-  display: flex;
+@mixin flex-center-horizontal ($flex-type: flex) {
+  display: $flex-type;
   justify-content: center;
 }
-@mixin flex-center-vertical {
-  display: flex;
+@mixin flex-center-vertical ($flex-type: flex) {
+  display: $flex-type;
   align-items: center;
 }
