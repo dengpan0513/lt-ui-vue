@@ -64,3 +64,7 @@ $border-radius-large: 2px;
   display: $flex-type;
   align-items: center;
 }
+
+// z-index
+$z-index-dialog: 1000;
+$z-index-message: 1010;
