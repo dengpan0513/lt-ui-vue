@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import LIcon from '~/Icon/Icon.vue'
+import Icon from '~/Icon/Icon.vue'
 
-const factoryIcon = (propsData) => {
-  return shallowMount(LIcon, {
-    propsData: { ...propsData }
+const factoryIcon = propsData => {
+  return shallowMount(Icon, {
+    propsData
   })
 }
 

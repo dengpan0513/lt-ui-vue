@@ -5,7 +5,7 @@ import Content from '~/Content/Content.vue'
 
 const factorySider = propsData => {
   return mount(Sider, {
-    propsData: { ...propsData },
+    propsData,
     slots: {
       default: 'sider'
     }

@@ -3,7 +3,7 @@ import Space from '~/Space/Space.vue'
 
 const factorySpace = (propsData, splitSlot = '') => {
   return mount(Space, {
-    propsData: { ...propsData },
+    propsData,
     slots: {
       default: [
         '<div>HTML</div>',

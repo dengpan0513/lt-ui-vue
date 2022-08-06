@@ -3,9 +3,7 @@ import Col from '~/Col/Col.vue'
 
 const factoryCol = propsData => {
   return mount(Col, {
-    propsData: {
-      ...propsData
-    }
+    propsData
   })
 }
 

@@ -1,11 +1,9 @@
 import { mount } from '@vue/test-utils'
-import LDivider from '~/Divider/Divider.vue'
+import Divider from '~/Divider/Divider.vue'
 
 const factoryDivider = (propsData, defaultSlot = '') => {
-  return mount(LDivider, {
-    propsData: {
-      ...propsData
-    },
+  return mount(Divider, {
+    propsData,
     slots: {
       default: defaultSlot
     }

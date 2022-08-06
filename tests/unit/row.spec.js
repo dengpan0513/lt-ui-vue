@@ -4,9 +4,7 @@ import Col from '~/Col/Col.vue'
 
 const factoryRow = propsData => {
   return mount(Row, {
-    propsData: {
-      ...propsData
-    },
+    propsData,
     stubs: {
       'l-col': Col
     },

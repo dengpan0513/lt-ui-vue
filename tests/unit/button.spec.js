@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import LButton from '~/Button/Button.vue'
+import Button from '~/Button/Button.vue'
 
-const factoryButton = (propsData) => {
-  return mount(LButton, {
-    propsData: { ...propsData },
+const factoryButton = propsData => {
+  return mount(Button, {
+    propsData,
     slots: {
       default: '按钮'
     }

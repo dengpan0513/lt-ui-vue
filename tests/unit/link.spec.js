@@ -1,11 +1,9 @@
 import { mount } from '@vue/test-utils'
-import LLink from '~/Link/Link.vue'
+import Link from '~/Link/Link.vue'
 
 const factoryLink = (propsData) => {
-  return mount(LLink, {
-    propsData: {
-      ...propsData
-    },
+  return mount(Link, {
+    propsData,
     slots: {
       default: '链接'
     }
