@@ -13,6 +13,8 @@ import Sider from '~/Sider/index.js'
 import Content from '~/Content/index.js'
 import Footer from '~/Footer/index.js'
 import Space from '~/Space/index.js'
+import Message from '~/Message/index.js'
+import MessagePlugin from '~/Message/plugin.js'
 
 const components = [
   Icon,
@@ -27,7 +29,8 @@ const components = [
   Sider,
   Content,
   Footer,
-  Space
+  Space,
+  Message
 ]
 
 const install = Vue => {
@@ -38,6 +41,7 @@ const install = Vue => {
   components.forEach(component => {
     Vue.component(component.name, component)
   })
+  Vue.use(MessagePlugin)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
